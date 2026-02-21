@@ -10,7 +10,12 @@ app.get('/', (req, res) => {
 
 app.get('/books', async (req, res) => {
     try {
-        const response = await fetch('');
+        const response = await fetch('', {
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36'
+            }
+        });
+
         const body = await response.text();
         const $ = cheerio.load(body);
         const books = [];
@@ -21,6 +26,7 @@ app.get('/books', async (req, res) => {
                 price: $(el).find('.price_color').text(),
             });
         });
+
         res.json(books);
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch data' });
