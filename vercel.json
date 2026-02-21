@@ -8,11 +8,11 @@
     ],
     "routes": [
         {
-            "src": "/api-docs",
+            "src": "/api-docs(.)",
             "dest": "app.js"
         },
         {
-            "src": "/books",
+            "src": "/books(.)",
             "dest": "app.js"
         },
         {
