@@ -35,8 +35,13 @@ const swaggerOptions = {
 };
 
 const swaggerDocs = swaggerJsdoc(swaggerOptions);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs, {
+    customCssUrl: '',
+    customJs: [
+        '',
+        ''
+    ]
+}));
 // 1. Endpoint للكتب
 app.get('/scrape/books', async (req, res) => {
     try {
